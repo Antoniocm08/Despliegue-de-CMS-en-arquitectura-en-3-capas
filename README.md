@@ -59,18 +59,57 @@ Los scripts en **Bash** serán responsables de:
 ## 4. Creación paso a paso de la VPC y sus subredes
 
 ### 4.1 Creación de la VPC
+- Lo primero es irte al apartado del VPC, despues seleciona tus VPCS y por ultimo le das a crear la VPC.
 
+
+- Lo siguiente es configurar la propia VPC.
 
 ### 4.2 Creación de subredes públicas y privadas
- 
+- Lo siguiente que voy hacer es crear una subred publica y otras dos subredes privadas (una de ellas para la base de datos).
+- Subred Publica
 
-### 4.3 Configuración de tablas de enrutamiento
- 
+- Subred Privada
 
-### 4.4 Configuración de Internet Gateway y NAT Gateway
- 
+- Subred Privada Base de datos
 
-### 4.5 Configuración de grupos de seguridad y ACLs
+### 4.3 Creacion de la red a internet
+- Voy a crear la gateway, para esto nos vamos a VPC, le damos al apartado de gateway nat y por ultimo le doy a crear gateway nat.
+
+- Lo siguiente es asociar esta gateway a nuestra VPC, para hacer esto debemos selecionar nuestra puerta de enlace darle al apartado de acciones y por ultimo conectar a VPC.
+
+### 4.4 Creamos la puerta NAT
+- Lo primero seria crear la ip elastica que se encuentra en el EC2 y exactamente en el apartado de red y seguridad.
+
+- Luego creamos la propia puerta NAT, que se encuentra en VPC y puerta de enlace
+ 
+### 4.5 Configuración de tablas de enrutamiento
+- Voy a crear la ruta publica y privada para la base de datos.
+- Creacion de la ruta de enrutamiento publica
+ 
+- Creacion de la ruta de enrutamiento privada
+  
+### 4.6 Creacion de los grupos de seguridad
+- Aqui creare los diferentes grupos de seguridad para cada uno.
+
+- Webs
+
+- MariaDB
+
+- Balanceador
+
+- NFS
+  
+### 4.7 Instancias creadas 
+- Por ultimo voy a crear las diferentes estancias.
+- Instancia de las webs
+
+- Instancia de MariaDB
+
+-Instancia del Balanceador
+
+-Instancia del NFS
+
+### 4.8 Configuración de grupos de seguridad y ACLs
 - **Balanceador**: permitir tráfico HTTP/HTTPS desde Internet.  
 - **Web/NFS**: permitir tráfico desde balanceador y NFS interno.  
 - **DB**: permitir tráfico solo desde servidores web.  
