@@ -1,4 +1,5 @@
 # Despliegue-de-CMS-en-arquitectura-en-3-capas
+
 # 📘 Documento Técnico: Despliegue de CMS WordPress en Alta Disponibilidad en AWS
 
 ## Índice
@@ -44,15 +45,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 
 ---
 
-## 3. Scripts de aprovisionamiento (estructura, sin código)
-Los scripts en **Bash** serán responsables de:  
-- Configuración de hostnames (ejemplo: `BalanceadorAntonio`, `Web1Antonio`, `DBAntonio`).  
-- Instalación de paquetes (Apache, NFS, MySQL/MariaDB).  
-- Configuración de servicios (balanceo, exportación NFS, base de datos).  
-- Personalización de WordPress con el nombre del alumno.  
-- Configuración de seguridad (grupos de seguridad, permisos).  
-
-> ⚠️ Los scripts deben incluir comentarios claros y buenas prácticas (`set -euo pipefail`).
+## 3. Scripts de aprovisionamiento
 
 ---
 
