@@ -1,6 +1,4 @@
-# Despliegue-de-CMS-en-arquitectura-en-3-capas
-
-# 📘 Documento Técnico: Despliegue de CMS WordPress en Alta Disponibilidad en AWS
+# 📘 Documento Técnico: Despliegue de CMS WordPress en Alta Disponibilidad en AWS  
 
 ## Índice
 1. Introducción  
@@ -9,9 +7,12 @@
 4. Creación paso a paso de la VPC y sus subredes  
    1. Creación de la VPC  
    2. Creación de subredes públicas y privadas  
-   3. Configuración de tablas de enrutamiento  
-   4. Configuración de Internet Gateway y NAT Gateway  
-   5. Configuración de grupos de seguridad y ACLs  
+   3. Creación de la red a Internet (Internet Gateway)  
+   4. Creación de la puerta NAT (NAT Gateway + Elastic IP)  
+   5. Configuración de tablas de enrutamiento  
+   6. Creación de los grupos de seguridad  
+   7. Instancias creadas (Web, MariaDB, Balanceador, NFS)  
+   8. Configuración de grupos de seguridad y ACLs  
 5. Pruebas de la infraestructura  
 6. Conclusión  
 
