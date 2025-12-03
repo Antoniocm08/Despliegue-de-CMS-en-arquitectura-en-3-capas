@@ -86,14 +86,18 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 - Aqui creare los diferentes grupos de seguridad para cada uno.
 
 - Webs
+<img width="1919" height="833" alt="Webs" src="https://github.com/user-attachments/assets/12566aa5-40b7-48da-ae42-218f8049e888" />
 
 - MariaDB
+<img width="1919" height="843" alt="Base de datos" src="https://github.com/user-attachments/assets/8001a9ff-549e-4119-b01d-2d11b9c8c35f" />
 
 - Balanceador
-![Imagen de WhatsApp 2025-12-03 a las 10 01 53_a3c7361a](https://github.com/user-attachments/assets/1cd4c542-0480-459d-a116-dcdc6c474496)
+  
+<img width="1918" height="830" alt="Balanceador" src="https://github.com/user-attachments/assets/c570b3cf-0383-42c5-9c8c-265e97ab8396" />
 
 - NFS
-  
+<img width="1919" height="852" alt="nfs" src="https://github.com/user-attachments/assets/8983e419-10c3-4e33-9074-4f56ce67ab28" />
+
 ### 4.7 Instancias creadas 
 - Por ultimo voy a crear las diferentes estancias.
 - Instancia de las webs
