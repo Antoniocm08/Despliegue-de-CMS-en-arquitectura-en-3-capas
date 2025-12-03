@@ -127,7 +127,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 La arquitectura propuesta garantiza:  
 - **Alta disponibilidad** mediante balanceo de carga.  
 - **Escalabilidad** con múltiples servidores web.  
-- **Seguridad** reforzada con grupos de seguridad y ACLs.  
+- **Seguridad** reforzada con grupos de seguridad.  
 - **Automatización** mediante scripts de aprovisionamiento.  
 - **Personalización** de WordPress con el nombre del alumno y dominio público.  
 
