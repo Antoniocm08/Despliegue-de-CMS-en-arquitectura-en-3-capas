@@ -90,6 +90,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 - MariaDB
 
 - Balanceador
+![Imagen de WhatsApp 2025-12-03 a las 10 01 53_a3c7361a](https://github.com/user-attachments/assets/1cd4c542-0480-459d-a116-dcdc6c474496)
 
 - NFS
   
