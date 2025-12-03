@@ -106,15 +106,15 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 
 - Instancia de MariaDB
 
--Instancia del Balanceador
+- Instancia del Balanceador
 
--Instancia del NFS
+- Instancia del NFS
 
 ### 4.8 Configuración de grupos de seguridad y ACLs
 - **Balanceador**: permitir tráfico HTTP/HTTPS desde Internet.  
 - **Web/NFS**: permitir tráfico desde balanceador y NFS interno.  
 - **DB**: permitir tráfico solo desde servidores web.  
-- **ACLs**: bloquear conectividad directa entre capa 1 y capa 3.  
+ 
 
 ---
 
