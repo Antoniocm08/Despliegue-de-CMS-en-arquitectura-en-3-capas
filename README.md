@@ -99,7 +99,9 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 <img width="1919" height="852" alt="nfs" src="https://github.com/user-attachments/assets/8983e419-10c3-4e33-9074-4f56ce67ab28" />
 
 ### 4.7 Instancias creadas 
+
 - Por ultimo voy a crear las diferentes estancias.
+  
 - Instancia de las webs
 
 - Instancia de MariaDB
