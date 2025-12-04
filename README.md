@@ -12,7 +12,7 @@
    5. Configuración de tablas de enrutamiento  
    6. Creación de los grupos de seguridad  
    7. Instancias creadas (Web, MariaDB, Balanceador, NFS)  
-   8. Configuración de grupos de seguridad y ACLs  
+   8. Configuración de grupos de seguridad.  
 5. Pruebas de la infraestructura  
 6. Conclusión  
 
@@ -36,8 +36,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 - **Subred privada B**: servidor de base de datos.  
 - **Internet Gateway**: acceso a Internet para la capa pública.  
 - **NAT Gateway**: acceso controlado a Internet para servidores privados.  
-- **Grupos de seguridad (SG)**: reglas de firewall a nivel de instancia.  
-- **ACLs de red**: control de tráfico entre subredes.  
+- **Grupos de seguridad (SG)**: reglas de firewall a nivel de instancia.   
 - **Elastic IP**: IP pública fija para el balanceador.  
 - **Apache**: balanceador y servidores web.  
 - **NFS**: almacenamiento compartido para WordPress.  
