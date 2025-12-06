@@ -3,8 +3,12 @@
 ## Índice
 1. [Introducción](#1-introducción)  
 2. [Componentes utilizados](#2-componentes-utilizados)  
-3. [Scripts de aprovisionamiento (estructura, sin código)](#3-scripts-de-aprovisionamiento)  
-4. [Creación paso a paso de la VPC y sus subredes](#4-creación-paso-a-paso-de-la-vpc-y-sus-subredes)  
+3. [Scripts de aprovisionamiento](#3-scripts-de-aprovisionamiento)
+   - [Balanceador](#balanceador)  
+   - [NFS](#nfs)  
+   - [MariaDB](#mariadb)  
+   - [Webs](#webs)
+5. [Creación paso a paso de la VPC y sus subredes](#4-creación-paso-a-paso-de-la-vpc-y-sus-subredes)  
    1. [Creación de la VPC](#41-creación-de-la-vpc)  
    2. [Creación de subredes públicas y privadas](#42-creación-de-subredes-públicas-y-privadas)  
    3. [Creación de la red a Internet (Internet Gateway)](#43-creacion-de-la-red-a-internet)  
@@ -13,8 +17,8 @@
    6. [Creación de los grupos de seguridad](#46-creacion-de-los-grupos-de-seguridad)  
    7. [Instancias creadas (Web, MariaDB, Balanceador, NFS)](#47-instancias-creadas)  
    8. [Configuración de grupos de seguridad ](#48-configuración-de-grupos-de-seguridad)  
-5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
-6. [Conclusión](#6-conclusión)  
+6. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
+7. [Conclusión](#6-conclusión)  
 
 ---
 
@@ -46,7 +50,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 ---
 
 ## 3. Scripts de aprovisionamiento
-- Balanceador
+### Balanceador
 ```
 #!/bin/bash
 
@@ -144,7 +148,7 @@ sudo a2ensite load-balancer-ssl.conf
 sudo systemctl reload apache2
 
 ```
-- NFS
+### NFS
 ```
 #!/bin/bash
 
@@ -197,7 +201,7 @@ sudo systemctl restart nfs-kernel-server
 sudo exportfs -a
 
 ```
-- MariaDB
+### MariaDB
 ```
 #!/bin/bash
 
@@ -236,7 +240,7 @@ sudo sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.
 sudo systemctl restart mariadb
 
 ```
-- Webs
+### Webs
 ```
 #!/bin/bash
 
@@ -361,16 +365,15 @@ sudo systemctl reload apache2
 
 - Instancia del NFS
 
-### 4.8 Configuración de grupos de seguridad y ACLs
+### 4.8 Configuración de grupos de seguridad
 - **Balanceador**: permitir tráfico HTTP/HTTPS desde Internet.  
 - **Web/NFS**: permitir tráfico desde balanceador y NFS interno.  
 - **DB**: permitir tráfico solo desde servidores web.  
- 
-
 ---
 
 ## 5. Pruebas de la infraestructura
 
+<img width="1792" height="956" alt="Captura de pantalla 2025-12-06 140916_BLOG_ANTONIO" src="https://github.com/user-attachments/assets/b21794c8-ebe7-4f23-8f5f-36765533da87" />
 
 ---
 
