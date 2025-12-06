@@ -51,6 +51,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 ---
 
 ## 3. Scripts de aprovisionamiento
+- Dentro de cada scrpit se explica paso a paso lo que hace cada uno de los comandos.
 ### 3.1 Balanceador
 ```
 #!/bin/bash
