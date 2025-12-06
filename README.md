@@ -14,7 +14,7 @@
    4.3 [Creación de la red a Internet (Internet Gateway)](#43-creacion-de-la-red-a-internet)  
    4.4 [Creamos la puerta NAT](#44-creamos-la-puerta-nat)  
    4.5 [Configuración de tablas de enrutamiento](#45-configuración-de-tablas-de-enrutamiento)  
-   4.6 [Creación de los grupos de seguridad](#46-creación-de-los-grupos-de-seguridad)  
+   4.6 [Creacion de los grupos de seguridad](#46-creacion-de-los-grupos-de-seguridad)  
    4.7 [Instancias creadas (Web, MariaDB, Balanceador, NFS)](#47-instancias-creadas)  
    4.8 [Configuración de grupos de seguridad](#48-configuración-de-grupos-de-seguridad)  
 5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
