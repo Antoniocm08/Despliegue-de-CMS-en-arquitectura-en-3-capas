@@ -320,56 +320,89 @@ sudo systemctl reload apache2
 <img width="1893" height="847" alt="Captura de pantalla 2025-12-06 161141_Mi_VPC" src="https://github.com/user-attachments/assets/89aa950d-c31c-460b-b620-27f4098b1137" />
 
 ### 4.2 Creación de subredes públicas y privadas
-- Lo siguiente que voy hacer es crear una subred publica y otras dos subredes privadas (una de ellas para la base de datos).
+- Lo siguiente que voy hacer es crear una subred publica y otras dos subredes privadas (una de ellas para la base de datos).Esto tambien se encuentra en el VPC.
+<img width="1893" height="920" alt="image" src="https://github.com/user-attachments/assets/5de015d1-03d3-4d56-84c7-970a98977886" />
+
 - Subred Publica
+<img width="1877" height="906" alt="image" src="https://github.com/user-attachments/assets/d300460d-f3e2-4334-9b89-db881cbb25ac" />
 
 - Subred Privada
+<img width="1917" height="862" alt="image" src="https://github.com/user-attachments/assets/84f70736-ece4-482e-9055-8831e7f5fc91" />
 
 - Subred Privada Base de datos
+<img width="1879" height="863" alt="image" src="https://github.com/user-attachments/assets/34ded032-cd81-402e-b493-7cecdef83e7b" />
 
 ### 4.3 Creacion de la red a internet
 - Voy a crear la gateway, para esto nos vamos a VPC, le damos al apartado de gateway nat y por ultimo le doy a crear gateway nat.
+<img width="1906" height="697" alt="image" src="https://github.com/user-attachments/assets/d66be34e-bda5-4589-806b-b754a309cbc1" />
+- Conecto la puerta de enlace internet a mi vpc.
+  <img width="1917" height="618" alt="Captura de pantalla 2025-12-06 162305" src="https://github.com/user-attachments/assets/2026251e-84ca-45b7-9b8b-b50e40c07a5e" />
 
 - Lo siguiente es asociar esta gateway a nuestra VPC, para hacer esto debemos selecionar nuestra puerta de enlace darle al apartado de acciones y por ultimo conectar a VPC.
+  <img width="1874" height="810" alt="image" src="https://github.com/user-attachments/assets/0c3d63b4-c58c-4ec1-8038-0c38c269f4d1" />
+
 
 ### 4.4 Creamos la puerta NAT
 - Lo primero seria crear la ip elastica que se encuentra en el EC2 y exactamente en el apartado de red y seguridad.
+<img width="1917" height="801" alt="image" src="https://github.com/user-attachments/assets/b6e061c5-32fb-4ea9-bf3d-095163dd1d45" />
 
 - Luego creamos la propia puerta NAT, que se encuentra en VPC y puerta de enlace
- 
+ <img width="1909" height="690" alt="image" src="https://github.com/user-attachments/assets/61a66759-f835-4041-87dc-410b06a42abe" />
+
 ### 4.5 Configuración de tablas de enrutamiento
-- Voy a crear la ruta publica y privada para la base de datos.
+- Voy a crear la ruta publica y privada para la base de datos, esto se encuentra tambien en el VPC.
+  <img width="1897" height="823" alt="image" src="https://github.com/user-attachments/assets/a3b2e2a7-b4e5-4c7f-a0aa-e1b3327dd896" />
+
 - Creacion de la ruta de enrutamiento publica
- 
-- Creacion de la ruta de enrutamiento privada
-  
+ <img width="1906" height="827" alt="image" src="https://github.com/user-attachments/assets/225dbd81-2a0c-49c3-b94e-2658f8c1cfb1" />
+
+- Creacion de la ruta de enrutamiento privada, contiene la privada del nfs y la de base de datos.
+  <img width="1890" height="836" alt="image" src="https://github.com/user-attachments/assets/51cddf86-f0a8-4f8c-81d6-baa22db6ffda" />
+
 ### 4.6 Creacion de los grupos de seguridad
 - Aqui creare los diferentes grupos de seguridad para cada uno.
+<img width="1888" height="902" alt="image" src="https://github.com/user-attachments/assets/1f613747-7703-41a8-9ca7-79a0846976c4" />
 
 - Webs
-<img width="1919" height="833" alt="Webs" src="https://github.com/user-attachments/assets/12566aa5-40b7-48da-ae42-218f8049e888" />
+- Contiene el puerto del NFS,HTTP,HTPPS y SSH, con la ip 0.0.0.0/0
+<img width="1917" height="772" alt="image" src="https://github.com/user-attachments/assets/c9a851dd-ac11-426d-b8b1-c3e65d0fbfbe" />
 
-- MariaDB
-<img width="1919" height="843" alt="Base de datos" src="https://github.com/user-attachments/assets/8001a9ff-549e-4119-b01d-2d11b9c8c35f" />
+
+- MariaDB(base de datos)
+- Tiene el puerto ssh y mysql/aurora con su ip 10.0.2.0/24
+<img width="1917" height="780" alt="image" src="https://github.com/user-attachments/assets/bdbc008a-f5ab-454c-bd35-e2c6a47e6a24" />
+
 
 - Balanceador
-  
-<img width="1918" height="830" alt="Balanceador" src="https://github.com/user-attachments/assets/c570b3cf-0383-42c5-9c8c-265e97ab8396" />
+- Contiene el puerto del HTTP,HTTPS y SSH
+<img width="1912" height="790" alt="image" src="https://github.com/user-attachments/assets/f0b48438-90b3-41da-be9e-806210dd7fa2" />
+
 
 - NFS
-<img width="1919" height="852" alt="nfs" src="https://github.com/user-attachments/assets/8983e419-10c3-4e33-9074-4f56ce67ab28" />
+- Contiene los puertos del SSH y NFS
+<img width="1911" height="731" alt="image" src="https://github.com/user-attachments/assets/8c963fa1-6aca-4b35-b3a2-89d0da441190" />
+
 
 ### 4.7 Instancias creadas 
 
-- Por ultimo voy a crear las diferentes estancias.
-  
-- Instancia de las webs
+- Por ultimo voy a crear las diferentes estancias., esto se encuentra en EC2.
+  <img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/9dfcc592-88ed-4670-bdc6-0238bcb68dac" />
 
-- Instancia de MariaDB
+- Instancia de las webs, al crearla pones su grupo de seguridad, el nombre , el vockey.
+<img width="1895" height="857" alt="image" src="https://github.com/user-attachments/assets/292de62e-ba73-410e-86a7-535999e10155" />
+- Tambien lo debes vincular con tu vpc creada.
+<img width="1901" height="876" alt="image" src="https://github.com/user-attachments/assets/92d067c5-a41f-44b5-bfc6-2b8ba5f2dca8" />
+- Y selecionar la subred en la que pertenece.
+<img width="1892" height="842" alt="image" src="https://github.com/user-attachments/assets/6cf4d007-80ac-43b6-8a81-78dfdba3d64a" />
 
-- Instancia del Balanceador
+- Instancia de MariaDB, al crearla hacemos lo mismo que en la web pero ponemos su grupo de seguridad, y la subred privada para la base de datos.
+<img width="1911" height="877" alt="image" src="https://github.com/user-attachments/assets/b9854003-48fe-4129-875d-dbc89ebd0246" />
 
-- Instancia del NFS
+- Instancia del Balanceador, al crear aqui ponemos la subred publica y su grupo de seguridad.
+<img width="1892" height="872" alt="image" src="https://github.com/user-attachments/assets/7a2c5c3d-e5e3-45a3-9edd-ed75382b28a5" />
+
+- Instancia del NFS, al crearla ponemos su subred privada y su grupo de seguridad.
+<img width="1918" height="901" alt="image" src="https://github.com/user-attachments/assets/a4da3212-794b-4fc2-87f9-675371206688" />
 
 ### 4.8 Configuración de grupos de seguridad
 - **Balanceador**: permitir tráfico HTTP/HTTPS desde Internet.  
