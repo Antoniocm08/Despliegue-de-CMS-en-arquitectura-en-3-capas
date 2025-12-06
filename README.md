@@ -420,6 +420,7 @@ sudo systemctl reload apache2
   <img width="1895" height="695" alt="Captura de pantalla 2025-12-06 155935" src="https://github.com/user-attachments/assets/c9fcdf4a-f886-4186-b268-9bee4130e3fe" />
 
 ---
+
 ## 7. Instrucciones de uso
 
 Para poder utilizar correctamente la infraestructura desplegada y acceder al CMS WordPress, sigue estos pasos:
