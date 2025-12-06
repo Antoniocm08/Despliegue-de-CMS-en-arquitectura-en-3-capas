@@ -8,7 +8,7 @@
    - [NFS](#nfs)  
    - [MariaDB](#mariadb)  
    - [Webs](#webs)
-5. [Creación paso a paso de la VPC y sus subredes](#4-creación-paso-a-paso-de-la-vpc-y-sus-subredes)  
+4. [Creación paso a paso de la VPC y sus subredes](#4-creación-paso-a-paso-de-la-vpc-y-sus-subredes)  
    1. [Creación de la VPC](#41-creación-de-la-vpc)  
    2. [Creación de subredes públicas y privadas](#42-creación-de-subredes-públicas-y-privadas)  
    3. [Creación de la red a Internet (Internet Gateway)](#43-creacion-de-la-red-a-internet)  
@@ -17,8 +17,9 @@
    6. [Creación de los grupos de seguridad](#46-creacion-de-los-grupos-de-seguridad)  
    7. [Instancias creadas (Web, MariaDB, Balanceador, NFS)](#47-instancias-creadas)  
    8. [Configuración de grupos de seguridad ](#48-configuración-de-grupos-de-seguridad)  
-6. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
-7. [Conclusión](#6-conclusión)  
+5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)
+6. [Pruebas del dominio](#6-pruebas-del-dominio)
+7. [Conclusión](#7-conclusión)  
 
 ---
 
@@ -376,7 +377,7 @@ sudo systemctl reload apache2
 <img width="1792" height="956" alt="Captura de pantalla 2025-12-06 140916_BLOG_ANTONIO" src="https://github.com/user-attachments/assets/b21794c8-ebe7-4f23-8f5f-36765533da87" />
 
 ---
-## 6. Pruebas de la infraestructura
+## 6. Pruebas del dominio
 - Mi dominio es : (https://antonio2005c.ddns.net/)
   <img width="1895" height="695" alt="Captura de pantalla 2025-12-06 155935" src="https://github.com/user-attachments/assets/c9fcdf4a-f886-4186-b268-9bee4130e3fe" />
 
