@@ -19,7 +19,7 @@
    4.8 [Configuración de grupos de seguridad](#48-configuración-de-grupos-de-seguridad)  
 5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
 6. [Pruebas del dominio](#6-pruebas-del-dominio)  
-7. [ Instrucciones de uso](#7-instruciones-de-uso)  
+7. [Instrucciones de uso](#7-instruciones-de-uso)  
 8. [Conclusión](#8-conclusión)
 ---
 
