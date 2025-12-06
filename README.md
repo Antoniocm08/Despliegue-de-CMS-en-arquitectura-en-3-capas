@@ -310,9 +310,14 @@ sudo systemctl reload apache2
 
 ### 4.1 Creación de la VPC
 - Lo primero es irte al apartado del VPC, despues seleciona tus VPCS y por ultimo le das a crear la VPC.
+<img width="1894" height="920" alt="Captura de pantalla 2025-12-06 161113" src="https://github.com/user-attachments/assets/a8fdb497-6dbb-4b7b-8b94-93cc5fa37cfb" />
 
 
-- Lo siguiente es configurar la propia VPC.
+- Lo siguiente es configurar la propia VPC
+- le pones el nombre que necesites y puse esta ip 10.0.0.0/16.
+<img width="1866" height="910" alt="Captura de pantalla 2025-12-06 161712" src="https://github.com/user-attachments/assets/3d5987b7-dfc5-4d0b-a4f7-f470ca0ded4e" />
+
+<img width="1893" height="847" alt="Captura de pantalla 2025-12-06 161141_Mi_VPC" src="https://github.com/user-attachments/assets/89aa950d-c31c-460b-b620-27f4098b1137" />
 
 ### 4.2 Creación de subredes públicas y privadas
 - Lo siguiente que voy hacer es crear una subred publica y otras dos subredes privadas (una de ellas para la base de datos).
@@ -390,4 +395,4 @@ La arquitectura propuesta garantiza:
 - **Automatización** mediante scripts de aprovisionamiento.  
 - **Personalización** de WordPress con el nombre del alumno y dominio público.  
 
-Este despliegue constituye una solución robusta y adaptable para entornos educativos y profesionales en AWS.
+Este despliegue constituye una solución robusta y adaptable para entornos profesionales en AWS.
