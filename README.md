@@ -51,7 +51,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 ---
 
 ## 3. Scripts de aprovisionamiento
-### Balanceador
+### 3.1 Balanceador
 ```
 #!/bin/bash
 
@@ -149,7 +149,7 @@ sudo a2ensite load-balancer-ssl.conf
 sudo systemctl reload apache2
 
 ```
-### NFS
+### 3.2 NFS
 ```
 #!/bin/bash
 
@@ -202,7 +202,7 @@ sudo systemctl restart nfs-kernel-server
 sudo exportfs -a
 
 ```
-### MariaDB
+### 3.3 MariaDB
 ```
 #!/bin/bash
 
@@ -241,7 +241,7 @@ sudo sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.
 sudo systemctl restart mariadb
 
 ```
-### Webs
+### 3.4 Webs
 ```
 #!/bin/bash
 
