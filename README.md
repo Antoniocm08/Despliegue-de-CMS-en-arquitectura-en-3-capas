@@ -388,11 +388,11 @@ sudo systemctl reload apache2
 - Por ultimo voy a crear las diferentes estancias., esto se encuentra en EC2.
 <img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/9dfcc592-88ed-4670-bdc6-0238bcb68dac" />
 
-- Instancia de las webs, al crearla pones su grupo de seguridad, el nombre , el vockey.
+-  Instancia de las webs, al crearla pones su grupo de seguridad, el nombre , el vockey.
 <img width="1895" height="857" alt="image" src="https://github.com/user-attachments/assets/292de62e-ba73-410e-86a7-535999e10155" />
-- Tambien lo debes vincular con tu vpc creada.
+-  Tambien lo debes vincular con tu vpc creada.
 <img width="1901" height="876" alt="image" src="https://github.com/user-attachments/assets/92d067c5-a41f-44b5-bfc6-2b8ba5f2dca8" />
-- Y selecionar la subred en la que pertenece.
+-  Y selecionar la subred en la que pertenece.
 <img width="1892" height="842" alt="image" src="https://github.com/user-attachments/assets/6cf4d007-80ac-43b6-8a81-78dfdba3d64a" />
 
 - Instancia de MariaDB, al crearla hacemos lo mismo que en la web pero ponemos su grupo de seguridad, y la subred privada para la base de datos.
