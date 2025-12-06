@@ -1,20 +1,20 @@
 # 📘 Documento Técnico: Despliegue de CMS WordPress en Alta Disponibilidad en AWS  
 
 ## Índice
-1. Introducción  
-2. Componentes utilizados  
-3. Scripts de aprovisionamiento (estructura, sin código)  
-4. Creación paso a paso de la VPC y sus subredes  
-   1. Creación de la VPC  
-   2. Creación de subredes públicas y privadas  
-   3. Creación de la red a Internet (Internet Gateway)  
-   4. Creación de la puerta NAT (NAT Gateway + Elastic IP)  
-   5. Configuración de tablas de enrutamiento  
-   6. Creación de los grupos de seguridad  
-   7. Instancias creadas (Web, MariaDB, Balanceador, NFS)  
-   8. Configuración de grupos de seguridad.  
-5. Pruebas de la infraestructura  
-6. Conclusión  
+1. [Introducción](#1-introducción)  
+2. [Componentes utilizados](#2-componentes-utilizados)  
+3. [Scripts de aprovisionamiento (estructura, sin código)](#3-scripts-de-aprovisionamiento)  
+4. [Creación paso a paso de la VPC y sus subredes](#4-creación-paso-a-paso-de-la-vpc-y-sus-subredes)  
+   1. [Creación de la VPC](#41-creación-de-la-vpc)  
+   2. [Creación de subredes públicas y privadas](#42-creación-de-subredes-públicas-y-privadas)  
+   3. [Creación de la red a Internet (Internet Gateway)](#43-creacion-de-la-red-a-internet)  
+   4. [Creación de la puerta NAT (NAT Gateway + Elastic IP)](#44-creamos-la-puerta-nat)  
+   5. [Configuración de tablas de enrutamiento](#45-configuración-de-tablas-de-enrutamiento)  
+   6. [Creación de los grupos de seguridad](#46-creacion-de-los-grupos-de-seguridad)  
+   7. [Instancias creadas (Web, MariaDB, Balanceador, NFS)](#47-instancias-creadas)  
+   8. [Configuración de grupos de seguridad ](#48-configuración-de-grupos-de-seguridad)  
+5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
+6. [Conclusión](#6-conclusión)  
 
 ---
 
