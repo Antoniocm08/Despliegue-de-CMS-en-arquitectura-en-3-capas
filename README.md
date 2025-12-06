@@ -12,7 +12,7 @@
    4.1 [Creación de la VPC](#41-creación-de-la-vpc)  
    4.2 [Creación de subredes públicas y privadas](#42-creación-de-subredes-públicas-y-privadas)  
    4.3 [Creación de la red a Internet (Internet Gateway)](#43-creacion-de-la-red-a-internet)  
-   4.4 [Creación de la puerta NAT (NAT Gateway + Elastic IP)](#44-creación-de-la-puerta-nat)  
+   4.4 [Creamos la puerta NAT](#44-creamos-la-puerta-nat)  
    4.5 [Configuración de tablas de enrutamiento](#45-configuración-de-tablas-de-enrutamiento)  
    4.6 [Creación de los grupos de seguridad](#46-creación-de-los-grupos-de-seguridad)  
    4.7 [Instancias creadas (Web, MariaDB, Balanceador, NFS)](#47-instancias-creadas)  
