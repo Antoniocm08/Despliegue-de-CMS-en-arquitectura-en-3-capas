@@ -336,10 +336,10 @@ sudo systemctl reload apache2
 - Voy a crear la gateway, para esto nos vamos a VPC, le damos al apartado de gateway nat y por ultimo le doy a crear gateway nat.
 <img width="1906" height="697" alt="image" src="https://github.com/user-attachments/assets/d66be34e-bda5-4589-806b-b754a309cbc1" />
 - Conecto la puerta de enlace internet a mi vpc.
-  <img width="1917" height="618" alt="Captura de pantalla 2025-12-06 162305" src="https://github.com/user-attachments/assets/2026251e-84ca-45b7-9b8b-b50e40c07a5e" />
+<img width="1917" height="618" alt="Captura de pantalla 2025-12-06 162305" src="https://github.com/user-attachments/assets/2026251e-84ca-45b7-9b8b-b50e40c07a5e" />
 
 - Lo siguiente es asociar esta gateway a nuestra VPC, para hacer esto debemos selecionar nuestra puerta de enlace darle al apartado de acciones y por ultimo conectar a VPC.
-  <img width="1874" height="810" alt="image" src="https://github.com/user-attachments/assets/0c3d63b4-c58c-4ec1-8038-0c38c269f4d1" />
+<img width="1874" height="810" alt="image" src="https://github.com/user-attachments/assets/0c3d63b4-c58c-4ec1-8038-0c38c269f4d1" />
 
 
 ### 4.4 Creamos la puerta NAT
@@ -386,7 +386,7 @@ sudo systemctl reload apache2
 ### 4.7 Instancias creadas 
 
 - Por ultimo voy a crear las diferentes estancias., esto se encuentra en EC2.
-  <img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/9dfcc592-88ed-4670-bdc6-0238bcb68dac" />
+<img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/9dfcc592-88ed-4670-bdc6-0238bcb68dac" />
 
 - Instancia de las webs, al crearla pones su grupo de seguridad, el nombre , el vockey.
 <img width="1895" height="857" alt="image" src="https://github.com/user-attachments/assets/292de62e-ba73-410e-86a7-535999e10155" />
@@ -411,7 +411,7 @@ sudo systemctl reload apache2
 ---
 
 ## 5. Pruebas de la infraestructura
-
+- Prueba de como se inicia en el woordpress.
 <img width="1792" height="956" alt="Captura de pantalla 2025-12-06 140916_BLOG_ANTONIO" src="https://github.com/user-attachments/assets/b21794c8-ebe7-4f23-8f5f-36765533da87" />
 
 ---
