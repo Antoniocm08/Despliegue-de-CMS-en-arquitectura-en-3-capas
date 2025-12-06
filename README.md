@@ -376,8 +376,12 @@ sudo systemctl reload apache2
 <img width="1792" height="956" alt="Captura de pantalla 2025-12-06 140916_BLOG_ANTONIO" src="https://github.com/user-attachments/assets/b21794c8-ebe7-4f23-8f5f-36765533da87" />
 
 ---
+## 6. Pruebas de la infraestructura
+- Mi dominio es : (https://antonio2005c.ddns.net/)
+  <img width="1895" height="695" alt="Captura de pantalla 2025-12-06 155935" src="https://github.com/user-attachments/assets/c9fcdf4a-f886-4186-b268-9bee4130e3fe" />
 
-## 6. Conclusión
+---
+## 7. Conclusión
 La arquitectura propuesta garantiza:  
 - **Alta disponibilidad** mediante balanceo de carga.  
 - **Escalabilidad** con múltiples servidores web.  
