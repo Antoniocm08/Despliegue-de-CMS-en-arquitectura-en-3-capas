@@ -19,8 +19,8 @@
    4.8 [Configuración de grupos de seguridad](#48-configuración-de-grupos-de-seguridad)  
 5. [Pruebas de la infraestructura](#5-pruebas-de-la-infraestructura)  
 6. [Pruebas del dominio](#6-pruebas-del-dominio)  
-7. [Conclusión](#7-conclusión)  
-
+7. [ Instrucciones de uso](#7-instruciones-de-uso)  
+8. [Conclusión](#8-conclusión)
 ---
 
 ## 1. Introducción
@@ -420,7 +420,40 @@ sudo systemctl reload apache2
   <img width="1895" height="695" alt="Captura de pantalla 2025-12-06 155935" src="https://github.com/user-attachments/assets/c9fcdf4a-f886-4186-b268-9bee4130e3fe" />
 
 ---
-## 7. Conclusión
+## 7. Instrucciones de uso
+
+Para poder utilizar correctamente la infraestructura desplegada y acceder al CMS WordPress, sigue estos pasos:
+
+1. **Encender las instancias en AWS**  
+   - Accede al servicio **EC2** en la consola de AWS.  
+   - Verifica que las instancias del **Balanceador**, **Web1**, **Web2**, **NFS** y **MariaDB** estén en estado `running`.  
+   - Si alguna está detenida, selecciónala y pulsa **Start Instance**.
+
+2. **Comprobar conectividad interna**  
+   - Desde el balanceador, asegúrate de que puedes hacer ping a las IP privadas de los servidores web y al NFS.  
+   - Comprueba también que los servidores web pueden conectarse a la base de datos MariaDB.
+
+3. **Acceder al CMS WordPress**  
+   - Una vez que las instancias estén encendidas y funcionando, abre un navegador web.  
+   - Introduce el **dominio configurado** o la **IP pública del balanceador**.   
+   - Si configuraste certificados SSL, asegúrate de usar `https://`.
+
+4. **Instalación inicial de WordPress**  
+   - Al acceder por primera vez, WordPress mostrará el asistente de instalación.  
+   - Introduce los datos de conexión a la base de datos (nombre de la BD, usuario y contraseña creados en MariaDB).  
+   - Configura el nombre del sitio, usuario administrador y contraseña.
+
+5. **Acceso al panel de administración**  
+   - Una vez instalado, accede al panel de administración de WordPress en:  
+   - Desde ahí podrás gestionar usuarios, instalar plugins y personalizar el sitio.
+
+---
+
+### Nota importante
+- Si cambias el dominio o la IP pública del balanceador, recuerda actualizar la configuración en Apache y en WordPress.  
+ 
+
+## 8. Conclusión
 La arquitectura propuesta garantiza:  
 - **Alta disponibilidad** mediante balanceo de carga.  
 - **Escalabilidad** con múltiples servidores web.  
