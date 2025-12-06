@@ -46,7 +46,7 @@ El objetivo es garantizar seguridad, rendimiento y automatización mediante scri
 ---
 
 ## 3. Scripts de aprovisionamiento
--Balanceador
+- Balanceador
 ```
 #!/bin/bash
 
@@ -141,6 +141,161 @@ sudo a2ensite load-balancer.conf
 sudo a2ensite load-balancer-ssl.conf
 
 # Recargamos Apache para que todas las configuraciones nuevas se apliquen sin reiniciar todo el servicio.
+sudo systemctl reload apache2
+
+```
+- NFS
+```
+#!/bin/bash
+
+# Cambiamos el nombre del host del servidor a "AntonioNFS" para identificarlo fácilmente.
+sudo hostnamectl set-hostname AntonioNFS
+
+# Actualizamos la lista de paquetes disponibles.
+sudo apt update
+
+# Instalamos el servidor NFS, que permitirá compartir carpetas con los servidores web.
+sudo apt install nfs-kernel-server -y
+
+# Creamos el directorio que queremos compartir a través de NFS.
+sudo mkdir -p /var/nfs/general
+
+# Cambiamos el propietario del directorio a 'nobody:nogroup',
+# para que NFS maneje permisos de manera segura para clientes anónimos.
+sudo chown nobody:nogroup /var/nfs/general
+
+# Añadimos los servidores web como clientes permitidos en NFS
+# y configuramos opciones:
+# - rw: lectura y escritura
+# - sync: operaciones sincrónicas
+# - no_subtree_check: mejora rendimiento evitando comprobación de subdirectorios
+echo "/var/nfs/general 10.0.2.99(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
+echo "/var/nfs/general 10.0.2.104(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
+
+# Instalamos 'unzip' para descomprimir archivos.
+sudo apt install unzip -y
+
+# Descargamos la última versión de WordPress en el directorio compartido.
+sudo wget -O /var/nfs/general/latest.zip https://wordpress.org/latest.zip
+
+# Descomprimimos WordPress en el directorio NFS.
+sudo unzip /var/nfs/general/latest.zip -d /var/nfs/general/
+
+# Cambiamos el propietario de los archivos de WordPress a 'www-data' para Apache.
+sudo chown -R www-data:www-data /var/nfs/general/wordpress
+
+# Establecemos permisos estándar:
+# - Carpetas: 755 (lectura y ejecución para todos, escritura solo para propietario)
+# - Archivos: 644 (lectura para todos, escritura solo para propietario)
+sudo find /var/nfs/general/wordpress/ -type d -exec chmod 755 {} \;
+sudo find /var/nfs/general/wordpress/ -type f -exec chmod 644 {} \;
+
+# Reiniciamos el servidor NFS para aplicar los cambios.
+sudo systemctl restart nfs-kernel-server
+
+# Exportamos todas las configuraciones de NFS definidas en /etc/exports.
+sudo exportfs -a
+
+```
+- MariaDB
+```
+#!/bin/bash
+
+# Cambiamos el nombre del host del servidor a "AntonioBaseDeDatos" para identificarlo fácilmente.
+sudo hostnamectl set-hostname AntonioBaseDeDatos
+
+# Actualizamos la lista de paquetes disponibles.
+sudo apt update
+
+# Instalamos MariaDB Server y el cliente, que serán usados para la base de datos de WordPress.
+sudo apt install mariadb-server mariadb-client -y
+
+# Creamos la base de datos llamada "wordpress" con codificación UTF-8,
+# adecuada para soportar todos los caracteres y acentos.
+sudo mariadb -e "CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+
+# Creamos un usuario llamado 'Antonio' para el servidor Web1 (IP 10.0.2.99)
+# y le asignamos contraseña '123456'.
+sudo mariadb -e "CREATE USER 'Antonio'@'10.0.2.99' IDENTIFIED BY '123456';"
+
+# Concedemos todos los privilegios sobre la base de datos 'wordpress' al usuario creado.
+sudo mariadb -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'Antonio'@'10.0.2.99';"
+
+# Creamos un usuario para el servidor Web2 (IP 10.0.2.104) con los mismos permisos.
+sudo mariadb -e "CREATE USER 'Antonio'@'10.0.2.104' IDENTIFIED BY '123456';"
+sudo mariadb -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'Antonio'@'10.0.2.104';"
+
+# Aplicamos los cambios de privilegios para que se hagan efectivos inmediatamente.
+sudo mariadb -e "FLUSH PRIVILEGES;"
+
+# Configuramos MariaDB para aceptar conexiones remotas
+# cambiando la dirección de enlace a 0.0.0.0 (acepta conexiones desde cualquier IP).
+sudo sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+# Reiniciamos el servicio MariaDB para aplicar los cambios de configuración.
+sudo systemctl restart mariadb
+
+```
+- Webs
+```
+#!/bin/bash
+
+# Cambiamos el nombre del host del servidor a "Web1Antonio" para identificarlo fácilmente.
+sudo hostnamectl set-hostname Web1Antonio
+
+# Actualizamos la lista de paquetes disponibles.
+sudo apt update
+
+# Instalamos el cliente de NFS y los módulos esenciales de PHP para WordPress:
+# - apache2: servidor web
+# - php y extensiones: soporte de PHP, conexión a MySQL, manipulación de imágenes, XML, llamadas HTTP, etc.
+sudo apt install nfs-common apache2 php libapache2-mod-php php-mysql php-curl php-gd php-xml php-mbstring php-xmlrpc -y
+
+# Creamos la carpeta local donde se montará el recurso NFS compartido por el servidor de archivos.
+sudo mkdir -p /nfs/general
+
+# Montamos manualmente la carpeta compartida del servidor NFS en la ruta local.
+sudo mount 10.0.2.156:/var/nfs/general /nfs/general
+
+# Automatizamos el montaje al iniciar el sistema agregando la entrada al fichero /etc/fstab.
+# Opciones:
+# - _netdev: espera a la red antes de montar
+# - auto: monta automáticamente al inicio
+# - nofail: evita que el arranque falle si no está disponible
+# - noatime, nolock, intr, tcp, actimeo=1800: optimizaciones de rendimiento y tolerancia de red
+echo "10.0.2.156:/var/nfs/general  /nfs/general  nfs _netdev,auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0" | sudo tee -a /etc/fstab
+
+# Configuración del VirtualHost para servir contenido desde la carpeta NFS
+
+# Copiamos el archivo de configuración por defecto de Apache para crear uno específico de WordPress.
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/wordpress.conf
+
+# Sobrescribimos el VirtualHost para que sirva los archivos de WordPress desde /nfs/general/wordpress.
+sudo tee /etc/apache2/sites-available/wordpress.conf > /dev/null <<EOF
+<VirtualHost *:80>
+    ServerName antonio2005c.ddns.net
+    ServerAdmin webmaster@localhost
+    DocumentRoot /nfs/general/wordpress/
+
+    <Directory /nfs/general/wordpress>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Archivos de registro para errores y accesos HTTP
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+
+# Deshabilitamos el sitio por defecto de Apache para evitar conflictos.
+sudo a2dissite 000-default.conf
+
+# Habilitamos el nuevo sitio de WordPress que apunta al NFS.
+sudo /usr/sbin/a2ensite wordpress.conf
+
+# Recargamos Apache para aplicar la nueva configuración sin reiniciar todo el servicio.
 sudo systemctl reload apache2
 
 ```
